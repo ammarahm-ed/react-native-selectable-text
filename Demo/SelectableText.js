@@ -62,6 +62,8 @@ const mapHighlightsRanges = (value, highlights) => {
  * Props
  * ...TextProps
  * onSelection: ({ content: string, eventType: string, selectionStart: int, selectionEnd: int }) => void
+ * onSelectionStart: ({}) => void
+ * onSelectionStop: ({}) => void
  * children: ReactNode
  * highlights: array({ id, start, end })
  * highlightColor: string
@@ -138,6 +140,8 @@ export const SelectableText = ({
       onHighlightPress={onHighlightPressNative}
       selectable
       onSelection={onSelectionNative}
+      onSelectionStart={onSelectionStart}
+      onSelectionStop={onSelectionStop}
     >
       <TextComponent
         key={v4()}

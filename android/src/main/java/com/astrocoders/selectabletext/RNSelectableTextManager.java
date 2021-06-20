@@ -65,12 +65,14 @@ public class RNSelectableTextManager extends ReactTextViewManager {
 
             @Override
             public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                onStartSelectionNativeEvent(view);
                 return true;
             }
 
             @Override
             public void onDestroyActionMode(ActionMode mode) {
                 // Called when an action mode is about to be exited and
+                onStopSelectionNativeEvent(view);
             }
 
             @Override
@@ -106,6 +108,30 @@ public class RNSelectableTextManager extends ReactTextViewManager {
         );
     }
 
+    public void onStartSelectionNativeEvent(ReactTextView view) {
+        WritableMap event = Arguments.createMap();
+
+        // Dispatch
+        ReactContext reactContext = (ReactContext) view.getContext();
+        reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
+            view.getId(),
+            "startSelection",
+            event
+        );
+    }
+
+    public void onStopSelectionNativeEvent(ReactTextView view) {
+        WritableMap event = Arguments.createMap();
+
+        // Dispatch
+        ReactContext reactContext = (ReactContext) view.getContext();
+        reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
+            view.getId(),
+            "stopSelection",
+            event
+        );
+    }
+
     @Override
     public Map getExportedCustomDirectEventTypeConstants() {
         return MapBuilder.builder()
@@ -113,6 +139,14 @@ public class RNSelectableTextManager extends ReactTextViewManager {
                         "topSelection",
                         MapBuilder.of(
                                 "registrationName","onSelection"))
+                .put(
+                    "startSelection",
+                    MapBuilder.of(
+                        "registrationName","onStartSelection"))
+                .put(
+                    "stopSelection",
+                    MapBuilder.of(
+                        "registrationName","onStopSelection"))
                 .build();
     }
 }
