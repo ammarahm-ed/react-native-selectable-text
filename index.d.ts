@@ -9,6 +9,8 @@ export interface SelectableTextProps {
     selectionStart: number;
     selectionEnd: number;
   }) => void;
+  onSelectionStart?: () => void;
+  onSelectionStop?: () => void;
 
   menuItems?: string[];
   highlights?: Array<{ id: string; start: number; end: number }>;
