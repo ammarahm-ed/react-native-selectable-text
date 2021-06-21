@@ -95,7 +95,7 @@ public class RNSelectableTextManager extends ReactTextViewManager {
 
     public void onSelectNativeEvent(ReactTextView view, String eventType, String content, int selectionStart, int selectionEnd) {
         WritableMap event = Arguments.createMap();
-        event.putString("eventType", eventType);
+        event.putString("eventType", "Running my version");
         event.putString("content", content);
         event.putInt("selectionStart", selectionStart);
         event.putInt("selectionEnd", selectionEnd);
