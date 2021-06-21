@@ -58,6 +58,8 @@ const mapHighlightsRanges = (value, highlights) => {
   return data.filter(x => x.text)
 }
 
+function nop() {}
+
 /**
  * Props
  * ...TextProps
@@ -76,8 +78,8 @@ export const SelectableText = ({
   onSelection, onHighlightPress, textValueProp, value, TextComponent, onSelectionStart, onSelectionStop,
   textComponentProps, ...props
 }) => {
-  const onStartSelection = onSelectionStart || () => {};
-  const onStopSelection = onSelectionStop || () => {};
+  const onStartSelection = onSelectionStart || nop;
+  const onStopSelection = onSelectionStop || nop;
   const usesTextComponent = !TextComponent;
   TextComponent = TextComponent || Text;
   textValueProp = textValueProp || 'children';  // default to `children` which will render `value` as a child of `TextComponent`
