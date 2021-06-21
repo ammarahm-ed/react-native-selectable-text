@@ -83,6 +83,7 @@ public class RNSelectableTextManager extends ReactTextViewManager {
 
                 // Dispatch event
                 onSelectNativeEvent(view, menuItems[item.getItemId()], selectedText, selectionStart, selectionEnd);
+                onStopSelectionNativeEvent(view);
 
                 mode.finish();
 
