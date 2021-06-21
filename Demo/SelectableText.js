@@ -73,7 +73,7 @@ const mapHighlightsRanges = (value, highlights) => {
  * textComponentProps: object
  */
 export const SelectableText = ({
-  onSelection, onHighlightPress, textValueProp, value, TextComponent, onSelectionStart, onSelectionStop
+  onSelection, onHighlightPress, textValueProp, value, TextComponent, onSelectionStart, onSelectionStop,
   textComponentProps, ...props
 }) => {
   const usesTextComponent = !TextComponent;
