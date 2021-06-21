@@ -134,6 +134,9 @@ export const SelectableText = ({
       textValue.push(props.appendToChildren);
     }
   }
+  console.log("start and stop are:");
+  console.log(onSelectionStart);
+  console.log(onSelectionStop);
   return (
     <RNSelectableText
       {...props}
