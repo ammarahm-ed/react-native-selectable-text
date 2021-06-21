@@ -82,6 +82,9 @@ export const SelectableText = ({
   const onSelectionNative = ({
     nativeEvent: { content, eventType, selectionStart, selectionEnd },
   }) => {
+    console.log("start and stop are:");
+    console.log(onSelectionStart);
+    console.log(onSelectionStop);
     onSelection && onSelection({ content, eventType, selectionStart, selectionEnd })
   }
 
@@ -134,9 +137,6 @@ export const SelectableText = ({
       textValue.push(props.appendToChildren);
     }
   }
-  console.log("start and stop are:");
-  console.log(onSelectionStart);
-  console.log(onSelectionStop);
   return (
     <RNSelectableText
       {...props}
