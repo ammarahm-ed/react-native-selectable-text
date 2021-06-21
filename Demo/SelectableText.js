@@ -82,11 +82,10 @@ export const SelectableText = ({
   const onSelectionNative = ({
     nativeEvent: { content, eventType, selectionStart, selectionEnd },
   }) => {
-    console.log("start and stop are:");
-    console.log(onSelectionStart);
-    console.log(onSelectionStop);
-    onSelection && onSelection({ content, eventType: "Running my version", selectionStart, selectionEnd })
+    onSelection && onSelection({ content, eventType, selectionStart, selectionEnd })
   }
+  onSelectionStart = onSelectionStart || () => {};
+  onSelectionStop = onSelectionStop || () => {};
 
   const onHighlightPressNative = onHighlightPress
     ? Platform.OS === 'ios'
