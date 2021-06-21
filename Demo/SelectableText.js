@@ -85,7 +85,7 @@ export const SelectableText = ({
     console.log("start and stop are:");
     console.log(onSelectionStart);
     console.log(onSelectionStop);
-    onSelection && onSelection({ content, eventType, selectionStart, selectionEnd })
+    onSelection && onSelection({ content, eventType: "Running my version", selectionStart, selectionEnd })
   }
 
   const onHighlightPressNative = onHighlightPress
