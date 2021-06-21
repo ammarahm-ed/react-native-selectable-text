@@ -140,8 +140,8 @@ export const SelectableText = ({
       onHighlightPress={onHighlightPressNative}
       selectable
       onSelection={onSelectionNative}
-      onSelectionStart={onSelectionStart}
-      onSelectionStop={onSelectionStop}
+      onStartSelection={onSelectionStart}
+      onStopSelection={onSelectionStop}
     >
       <TextComponent
         key={v4()}
