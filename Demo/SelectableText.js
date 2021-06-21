@@ -76,6 +76,8 @@ export const SelectableText = ({
   onSelection, onHighlightPress, textValueProp, value, TextComponent, onSelectionStart, onSelectionStop,
   textComponentProps, ...props
 }) => {
+  const onStartSelection = onSelectionStart || () => {};
+  const onStopSelection = onSelectionStop || () => {};
   const usesTextComponent = !TextComponent;
   TextComponent = TextComponent || Text;
   textValueProp = textValueProp || 'children';  // default to `children` which will render `value` as a child of `TextComponent`
@@ -84,8 +86,6 @@ export const SelectableText = ({
   }) => {
     onSelection && onSelection({ content, eventType, selectionStart, selectionEnd })
   }
-  onSelectionStart = onSelectionStart || () => {};
-  onSelectionStop = onSelectionStop || () => {};
 
   const onHighlightPressNative = onHighlightPress
     ? Platform.OS === 'ios'
@@ -142,8 +142,8 @@ export const SelectableText = ({
       onHighlightPress={onHighlightPressNative}
       selectable
       onSelection={onSelectionNative}
-      onStartSelection={onSelectionStart}
-      onStopSelection={onSelectionStop}
+      onStartSelection={onStartSelection}
+      onStopSelection={onStopSelection}
     >
       <TextComponent
         key={v4()}
