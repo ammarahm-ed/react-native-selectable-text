@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { Text, requireNativeComponent, Platform } from 'react-native'
 import { v4 } from 'uuid'
 import memoize from 'fast-memoize'
@@ -83,11 +83,11 @@ export const SelectableText = ({
   const usesTextComponent = !TextComponent;
   TextComponent = TextComponent || Text;
   textValueProp = textValueProp || 'children';  // default to `children` which will render `value` as a child of `TextComponent`
-  const onSelectionNative = ({
+  const onSelectionNative = useCallback(({
     nativeEvent: { content, eventType, selectionStart, selectionEnd },
   }) => {
     onSelection && onSelection({ content, eventType, selectionStart, selectionEnd })
-  }
+  }, [onSelection]);
 
   const onHighlightPressNative = onHighlightPress
     ? Platform.OS === 'ios'
@@ -138,6 +138,11 @@ export const SelectableText = ({
       textValue.push(props.appendToChildren);
     }
   }
+  let textKey = useMemo(() => v4(), [
+    textValueProp,
+    textValue,
+    textComponentProps,
+  ]);
   return (
     <RNSelectableText
       {...props}
@@ -148,7 +153,7 @@ export const SelectableText = ({
       onStopSelection={onStopSelection}
     >
       <TextComponent
-        key={v4()}
+        key={textKey}
         {...{[textValueProp]: textValue, ...textComponentProps}}
       />
     </RNSelectableText>
