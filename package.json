@@ -14,7 +14,7 @@
   "author": "Astrocoders <contact@astrocoders.com>",
   "license": "MIT",
   "peerDependencies": {
-    "react-native": "^0.41.2"
+    "react-native": "+"
   },
   "dependencies": {
     "fast-memoize": "^2.5.1",
